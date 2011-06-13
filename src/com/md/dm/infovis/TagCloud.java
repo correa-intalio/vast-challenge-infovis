@@ -84,8 +84,10 @@ public class TagCloud extends HttpServlet {
 			session.getTransaction().commit();
 
 		} catch (Exception ex) {
+			
 			HibernateUtil.getSessionFactory().getCurrentSession()
 					.getTransaction().rollback();
+			
 			if (ServletException.class.isInstance(ex)) {
 				throw (ServletException) ex;
 			} else {
@@ -98,6 +100,7 @@ public class TagCloud extends HttpServlet {
 	private Tag createTagFor(Session session, String word) {
 
 		Criteria criteria = session.createCriteria(Microblog.class);
+		criteria.setMaxResults(50);
 		List result = criteria.add(Restrictions.like("text", "%" + word + "%"))
 				.list();
 		int size = result.size();
