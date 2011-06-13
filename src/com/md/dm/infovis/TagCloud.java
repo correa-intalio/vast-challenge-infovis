@@ -81,7 +81,7 @@ public class TagCloud extends HttpServlet {
 
 		request.setAttribute("Cloud", cloud);
 		
-		  getServletConfig().getServletContext().getRequestDispatcher(
+		 getServletConfig().getServletContext().getRequestDispatcher(
 	        "/charts/tagcloud.jsp").forward(request,response);
 
 	}
