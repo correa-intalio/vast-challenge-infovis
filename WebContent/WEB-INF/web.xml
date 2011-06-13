@@ -14,4 +14,14 @@
     <servlet-name>VersionService</servlet-name>
     <url-pattern>/version</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TagCloud</display-name>
+    <servlet-name>TagCloud</servlet-name>
+    <servlet-class>com.md.dm.infovis.TagCloud</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TagCloud</servlet-name>
+    <url-pattern>/tagcloud</url-pattern>
+  </servlet-mapping>
 </web-app>
