@@ -41,14 +41,13 @@ div.olControlScaleLine {
 		var lon = 42.230864;
 		var zoom = 0;
 		var options = {
+			scales : [ 125000, 100000, 50000, 25000, 10000, 5000, 1000, 500,
+					250 ],
 			minResolution : "auto",
-			minExtent : new OpenLayers.Bounds(-93.5673, 42.1609, -93.1923,
-					42.3017),
-			maxResolution : "0.00004717",
-			//resolution: "0.00004717",
-			//resolutions : [ 0.00004717 ],
+			minExtent : new OpenLayers.Bounds(-1, -1, 1, 1),
+			maxResolution : 0.00004717,
 			maxExtent : new OpenLayers.Bounds(-93.5673, 42.1609, -93.1923,
-					42.3017)	
+					42.3017)
 		};
 
 		map = new OpenLayers.Map('map', options);
@@ -115,21 +114,20 @@ div.olControlScaleLine {
 		};
 
 		var graphic = new OpenLayers.Layer.Image('Vastopolis Map',
-		 'http://localhost:8080/vast-challenge/map/Vastopolis_Map.png',
-		 new OpenLayers.Bounds(-93.5673, 42.1609, -93.1923,
-		 42.3017),
-		 new OpenLayers.Size(5216, 2653), options);
+				'http://localhost:8080/vast-challenge/map/Vastopolis_Map.png',
+				new OpenLayers.Bounds(-93.5673, 42.1609, -93.1923, 42.3017),
+				new OpenLayers.Size(5216, 2653), options);
 
-		 graphic.events.on({
-		 loadstart : function() {
-		 OpenLayers.Console.log("loadstart");
-		 },
-		 loadend : function() {
-		 OpenLayers.Console.log("loadend");
-		 }
-		 });
-		 
-		map.addLayers([ /*ol_wms, */vector_layer, graphic]);
+		graphic.events.on({
+			loadstart : function() {
+				OpenLayers.Console.log("loadstart");
+			},
+			loadend : function() {
+				OpenLayers.Console.log("loadend");
+			}
+		});
+
+		map.addLayers([ /*ol_wms, */vector_layer, graphic ]);
 
 		vector_layer.addFeatures(geojson_format.read(featurecollection));
 
